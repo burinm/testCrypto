@@ -28,6 +28,8 @@
 // CPU is assumed to be little endian.   Edit this file if you
 // need to port this library to a big endian CPU.
 
+#define CRYPTO_LITTLE_ENDIAN 1
+
 #define htole32(x)  (x)
 #define le32toh(x)  (x)
 #define htobe32(x)  \
