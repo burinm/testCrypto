@@ -42,4 +42,15 @@
     }))
 #define be32toh(x)  (htobe32((x)))
 
+#define htole64(x)  (x)
+#define le64toh(x)  (x)
+#define htobe64(x)  \
+    (__extension__ ({ \
+        uint64_t __temp = (x); \
+        uint32_t __low = htobe32((uint32_t)__temp); \
+        uint32_t __high = htobe32((uint32_t)(__temp >> 32)); \
+        (((uint64_t)__low) << 32) | __high; \
+    }))
+#define be64toh(x)  (htobe64((x)))
+
 #endif
