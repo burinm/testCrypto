@@ -30,6 +30,16 @@
 
 #define CRYPTO_LITTLE_ENDIAN 1
 
+#define htole16(x)  (x)
+#define le16toh(x)  (x)
+#define htobe16(x)  \
+    (__extension__ ({ \
+        uint16_t _temp = (x); \
+        ((_temp >> 8) & 0x00FF) | \
+        ((_temp << 8) & 0xFF00); \
+    }))
+#define be16toh(x)  (htobe16((x)))
+
 #define htole32(x)  (x)
 #define le32toh(x)  (x)
 #define htobe32(x)  \
