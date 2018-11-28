@@ -1,0 +1,29 @@
+Arduino Cryptography Library - rweather
+    https://rweather.github.io/arduinolibs/index.html
+    https://github.com/rweather/arduinolibs/tree/master
+
+--Fork created-- 11/28/2018 [Latest commit b9fefc6  on May 15]
+    Only used arduinolibs/libraries/Crypto, and copied in README.md
+    git clone https://github.com/rweather/arduinolibs.git
+    mv arduinolibs rweatherCrypto
+    cd rweatherCrypto/
+
+    //Arduino can't selectively compile, reduce repository just
+    //to files needed, keep history
+
+    git filter-branch --prune-empty --subdirectory-filter libraries/Crypto
+    git filter-branch -f  --prune-empty --index-filter 'git  rm -r --cached --ignore-unmatch examples'
+
+    git filter-branch  -f --prune-empty --index-filter 'git rm --cached --ignore-unmatch AES128.cpp AES192.cpp AES256.cpp AESCommon.cpp AESEsp32.cpp AES.h AuthenticatedCipher.cpp AuthenticatedCipher.h BigNumberUtil.cpp BigNumberUtil.h BLAKE2b.cpp BLAKE2b.h BLAKE2s.cpp BLAKE2s.h BlockCipher.cpp BlockCipher.h ChaCha.cpp ChaCha.h ChaChaPoly.cpp ChaChaPoly.h Cipher.cpp Cipher.h CTR.cpp CTR.h Curve25519.cpp Curve25519.h EAX.cpp EAX.h Ed25519.cpp Ed25519.h GCM.cpp GCM.h GF128.cpp GF128.h GHASH.cpp GHASH.h KeccakCore.cpp KeccakCore.h keywords.txt library.json NoiseSource.cpp NoiseSource.h OMAC.cpp OMAC.h P521.cpp P521.h Poly1305.cpp Poly1305.h RNG.cpp RNG.h SHA3.cpp SHA3.h SHA512.cpp SHA512.h SHAKE.cpp SHAKE.h XOF.cpp XOF.h XTS.cpp XTS.h'
+
+    git checkout -b bmmpr_v0.5
+
+    put back from https://github.com/rweather/arduinolibs
+        README.md
+        libraries/LICENSE.txt
+
+    git add LICENSE.txt README.md upstream.txt
+        
+    git remote rename origin upstream
+    git remote add origin https://github.com/bolteon/rweatherCrypto.git
+    git push --set-upstream origin bmmpr_v0.5
